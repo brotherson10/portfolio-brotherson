@@ -3,399 +3,173 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfólio de Brotherson Américo, Desenvolvedor Front-end focado em interfaces modernas, responsivas e de alto impacto." />
     <link rel="stylesheet" href="styles.css" />
-    <title>Portfólio | Dev Brotherson</title>
+    <title>Brotherson Américo | Front-end Developer</title>
   </head>
+
   <body>
-    <div class="particles"></div>
+    <div class="background-orbs" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
 
-    <nav class="navegation">
-      <ul class="menu">
-        <li>
-          <a href="#inicio" class="menu-link">Início</a>
-        </li>
-        <li>
-          <a href="#sobre" class="menu-link">Sobre mim</a>
-        </li>
-        <li>
-          <a href="#projetos" class="menu-link">Projetos</a>
-        </li>
-        <li>
-          <a href="#contatos" class="menu-link">Contatos</a>
-        </li>
-      </ul>
-    </nav>
+    <header class="nav" id="nav">
+      <a href="#inicio" class="brand" aria-label="Início">
+        <span class="brand-mark">BA</span>
+        <span>Brotherson <strong>Américo</strong></span>
+      </a>
 
-    <main id="inicio" class="header">
-      <img
-        src="./assets/foto-brotherson.png"
-        alt="Foto do Brotherson"
-        class="img-perfil"
-      />
-      <h1>Brotherson Américo</h1>
-      <p class="header-subtitle">Frontend Developer</p>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#inicio" class="nav-link active">Início</a>
+        <a href="#sobre" class="nav-link">Sobre</a>
+        <a href="#projetos" class="nav-link">Projetos</a>
+        <a href="#habilidades" class="nav-link">Habilidades</a>
+        <a href="#contatos" class="nav-link">Contato</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero section-shell">
+        <div class="hero-content reveal">
+          <span class="availability"><span></span> Disponível para oportunidades</span>
+          <p class="eyebrow">Front-end Developer</p>
+          <h1>Transformo ideias em experiências digitais <span>modernas.</span></h1>
+          <p class="hero-text">
+            Desenvolvedor Front-end focado em interfaces responsivas, código limpo e projetos reais com HTML, CSS, JavaScript, React e integrações com APIs.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projetos" class="btn primary">Ver projetos</a>
+            <a href="#contatos" class="btn secondary">Entrar em contato</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-1">
+          <div class="profile-frame">
+            <img src="./assets/foto-brotherson.png" alt="Foto de Brotherson Américo" />
+            <div class="scan-line"></div>
+          </div>
+          <div class="floating-card card-code">&lt;/&gt;<span>Código limpo</span></div>
+          <div class="floating-card card-performance">⚡<span>Performance</span></div>
+          <div class="floating-card card-responsive">▣<span>Responsivo</span></div>
+        </div>
+      </section>
+
+      <section id="sobre" class="about section-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Sobre mim</p>
+          <h2>Perfil técnico com visão prática de produto.</h2>
+        </div>
+
+        <div class="about-grid">
+          <article class="glass-card about-text reveal">
+            <p>
+              Olá! Sou Desenvolvedor Web com experiência prática em desenvolvimento frontend e backend, incluindo construção de aplicações completas com integração entre interface, lógica e dados.
+            </p>
+            <p>
+              Atuação em projetos reais, com foco em interfaces responsivas, interatividade com JavaScript e implementação de sistemas CRUD no backend. Possui conhecimentos em React, Node.js e integração com APIs, além de experiência com versionamento de código e deploy de aplicações.
+            </p>
+            <p>
+              Destaco-me pela capacidade de aprendizagem rápida, organização e compromisso com a qualidade das entregas.
+            </p>
+            <p>
+              Background em Administração e experiência profissional prévia contribuem para forte visão de negócio, organização e resolução de problemas.
+            </p>
+          </article>
+
+          <div class="about-highlights reveal delay-1">
+            <article class="mini-card"><strong>UX/UI</strong><span>Interfaces claras, modernas e responsivas.</span></article>
+            <article class="mini-card"><strong>Projetos reais</strong><span>Landing pages, APIs, deploy e GitHub.</span></article>
+            <article class="mini-card"><strong>Aprendizado contínuo</strong><span>Evolução constante com prática e entregas.</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projetos" class="projects section-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Meus projetos</p>
+          <h2>Projetos em destaque para recrutadores.</h2>
+          <a class="github-link" href="https://github.com/brotherson10" target="_blank" rel="noreferrer">Ver todos no GitHub →</a>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card featured reveal">
+            <div class="project-image"><img src="./assets/runflow.png" alt="RunFlow Page" /></div>
+            <div class="project-content">
+              <span class="project-type">Full project</span>
+              <h3>RunFlow Page + API + DataBase</h3>
+              <p>Landing page moderna para assessoria esportiva com API, backend e banco de dados.</p>
+              <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>API</span><span>Backend</span></div>
+              <div class="project-links"><a href="https://runflow-page.netlify.app/" target="_blank">Ver projeto</a><a href="https://github.com/brotherson10/decode-project-1-runflow" target="_blank">Frontend</a><a href="https://github.com/brotherson10/decode-project-3-runflow-db" target="_blank">Backend</a></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal delay-1">
+            <div class="project-image"><img src="./assets/gsa-sports.png" alt="GSA Sports" /></div>
+            <div class="project-content"><span class="project-type">Landing page</span><h3>GSA Sports</h3><p>Site responsivo para empresa de agenciamento e assessoria de atletas de futebol.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><div class="project-links"><a href="https://gsa-sports.netlify.app/" target="_blank">Ver projeto</a><a href="https://github.com/brotherson10/gsa-sports-landpg" target="_blank">GitHub</a></div></div>
+          </article>
+
+          <article class="project-card reveal delay-2">
+            <div class="project-image"><img src="./assets/sohard-energia-solar.png" alt="Sohard Energia Solar" /></div>
+            <div class="project-content"><span class="project-type">Landing page</span><h3>Sohard Energia Solar</h3><p>Landing page moderna e responsiva para apresentação digital de empresa solar.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><div class="project-links"><a href="https://sohard-solar.netlify.app/" target="_blank">Ver projeto</a><a href="https://github.com/brotherson10/landing-solar" target="_blank">GitHub</a></div></div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image"><img src="./assets/dev-burger.png" alt="Burger House" /></div>
+            <div class="project-content"><span class="project-type">Interface</span><h3>Burger House</h3><p>Landing page para hamburgueria com foco em UX, cardápio e experiência visual.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><div class="project-links"><a href="https://devburger-house.netlify.app/" target="_blank">Ver projeto</a><a href="https://github.com/brotherson10/burger-house" target="_blank">GitHub</a></div></div>
+          </article>
+
+          <article class="project-card reveal delay-1">
+            <div class="project-image"><img src="./assets/cafe-cafena.png" alt="Café Cafena" /></div>
+            <div class="project-content"><span class="project-type">Landing page</span><h3>Café Cafena</h3><p>Site para cafeteria com menu, localização, visual moderno e design responsivo.</p><div class="tags"><span>HTML</span><span>CSS</span></div><div class="project-links"><a href="https://cafe-cafena.netlify.app/" target="_blank">Ver projeto</a><a href="https://github.com/brotherson10/Landing-page-Cafeteria" target="_blank">GitHub</a></div></div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="habilidades" class="skills section-shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Stack</p>
+          <h2>Ferramentas que uso para criar interfaces profissionais.</h2>
+        </div>
+
+        <div class="skills-grid reveal">
+          <article><h3>Frontend</h3><p>HTML, CSS, JavaScript, React</p></article>
+          <article><h3>Backend</h3><p>Node.js, Express, API REST, MongoDB, MySQL, PostgreSQL, Docker, Databases</p></article>
+          <article><h3>Automação</h3><p>n8n e fluxos com IA</p></article>
+          <article><h3>Versionamento</h3><p>Git, GitHub, deploy e Netlify</p></article>
+        </div>
+      </section>
+
+      <section id="contatos" class="contact section-shell reveal">
+        <div class="contact-card">
+          <p class="eyebrow">Contato</p>
+          <h2>Vamos construir algo profissional juntos?</h2>
+          <p>Se quiser saber mais sobre mim, avaliar meus projetos ou conversar sobre uma oportunidade, me chama por um dos canais abaixo.</p>
+
+          <div class="contact-actions">
+            <a href="https://wa.me/351933368428?text=Olá%20Brotherson!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar." target="_blank">WhatsApp</a>
+            <a href="https://www.linkedin.com/in/brotherson/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/brotherson10/" target="_blank">GitHub</a>
+            <button type="button" onclick="copyEmail()">Copiar email</button>
+          </div>
+
+          <div class="contact-meta">
+            <span>brotherson100@gmail.com</span>
+            <span>Lisboa, Portugal</span>
+          </div>
+        </div>
+        <div id="toast" class="toast">Email copiado!</div>
+      </section>
     </main>
 
-    <section id="sobre" class="section-me">
-      <h2 class="me-title">Sobre Mim</h2>
-      <div class="me-box">
-        <p class="me-text">
-          Olá! Sou Front-End Developer com foco em JavaScript e React, com
-          experiência prática no desenvolvimento de aplicações web e landing
-          pages responsivas, aplicando boas práticas de código e atenção à
-          experiência do utilizador. Trabalho com HTML, CSS, JavaScript moderno
-          e React, além de versionamento com Git/GitHub. Tenho também base em
-          Node.js e Express, o que amplia minha visão de integração entre
-          front-end e back-end. Destaco-me pela capacidade de aprendizagem
-          rápida, organização e compromisso com a qualidade das entregas.
-        </p>
+    <footer class="footer">
+      <p>Desenvolvido por <strong>Brotherson Américo</strong> © 2026</p>
+    </footer>
 
-        <div class="tech-box">
-          <h3 class="tech-title">Tecnologias</h3>
-
-          <div class="tech-category">
-            <h4 class="tech-category-title">Frontend</h4>
-            <div class="tech-list">
-              <span class="tech-item">HTML</span>
-              <span class="tech-item">CSS</span>
-              <span class="tech-item">JavaScript</span>
-              <span class="tech-item">React</span>
-            </div>
-          </div>
-
-          <div class="tech-category">
-            <h4 class="tech-category-title">Backend</h4>
-            <div class="tech-list">
-              <span class="tech-item">Node.js</span>
-              <span class="tech-item">Express</span>
-              <span class="tech-item">API REST</span>
-              <span class="tech-item">MongoDB</span>
-            </div>
-          </div>
-
-          <div class="tech-category">
-            <h4 class="tech-category-title">Automação</h4>
-            <div class="tech-list">
-              <span class="tech-item">n8n</span>
-            </div>
-          </div>
-
-          <div class="tech-category">
-            <h4 class="tech-category-title">Versionamento & Deploy</h4>
-            <div class="tech-list">
-              <span class="tech-item">Git</span>
-              <span class="tech-item">GitHub</span>
-              <span class="tech-item">Deploy</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projetos" class="projects">
-      <h2 class="projects-title">Meus Projetos</h2>
-      <div class="projects-box">
-
-        <div class="project-cards">
-          <div class="project-media">
-            <img
-              src="./assets/runflow.png"
-              alt="Landing Page RunFlow"
-              class="img-project"
-            />
-
-            <div class="project-overlay">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>API</span>
-              <span>Backend and DataBase</span>
-            </div>
-          </div>
-
-          <div class="box-text-project">
-            <h3 class="info-project">RunFlow Page + API + DataBase</h3>
-
-            <p class="p-cards">
-              Landing page moderna com design responsivo para empresa de
-              assessoria esportiva com consumo de API, Backend, Banco de dados.
-            </p>
-
-            <div class="project-links">
-              <a
-                href="https://runflow-page.netlify.app/"
-                target="_blank"
-                class="project-btn"
-              >
-                Ver Projeto
-              </a>
-
-              <a
-                href="https://github.com/brotherson10/decode-project-1-runflow"
-                target="_blank"
-                class="project-btn outline"
-              >
-                GitHub (Frontend)
-              </a>
-
-              <a
-                href="https://github.com/brotherson10/decode-project-3-runflow-db"
-                target="_blank"
-                class="project-btn outline"
-              >
-                GitHub (Backend + DataBase)
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-cards">
-            <div class="project-media">
-              <img
-                src="./assets/gsa-sports.png"
-                alt="Site GSA"
-                class="img-project"
-              />
-
-              <div class="project-overlay">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
-            </div>
-
-            <div class="box-text-project">
-              <h3 class="info-project">GSA Sports</h3>
-
-              <p class="p-cards">
-                Landing page moderna com scroll infinito e design responsivo
-                para uma empresa de agenciamento e assessoria de atletas de
-                futebol.
-              </p>
-
-              <div class="project-links">
-                <a
-                  href="https://gsa-sports.netlify.app/"
-                  target="_blank"
-                  class="project-btn"
-                >
-                  Ver Projeto
-                </a>
-
-                <a
-                  href="https://github.com/brotherson10/gsa-sports-landpg"
-                  target="_blank"
-                  class="project-btn outline"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-
-        <div class="project-cards">
-          <div class="project-media">
-            <img
-              src="./assets/sohard-energia-solar.png"
-              alt="Site Sohard"
-              class="img-project"
-            />
-            <div class="project-overlay">
-              <span>HTML</span>
-              <span>CSS</span>
-            </div>
-          </div>
-          <div class="box-text-project">
-            <h3 class="info-project">Sohard Energia Solar</h3>
-            <p class="p-cards">
-              Landing page moderna e design responsivo para apresentação digital
-              da empresa Sohard Energia Solar
-            </p>
-            <div class="project-links">
-              <a
-                href="https://sohard-solar.netlify.app/"
-                target="_blank"
-                class="project-btn"
-              >
-                Ver Projeto
-              </a>
-
-              <a
-                href="https://github.com/brotherson10/landing-solar"
-                target="_blank"
-                class="project-btn outline"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-cards">
-          <div class="project-media">
-            <img
-              src="./assets/dev-burger.png"
-              alt="Site BurgerHouse"
-              class="img-project"
-            />
-            <div class="project-overlay">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-            </div>
-          </div>
-          <div class="box-text-project">
-            <h3 class="info-project">Burger House</h3>
-            <p class="p-cards">
-              Landing page moderna com menu para apresentação de Hamburgueria e
-              foco em UX
-            </p>
-            <div class="project-links">
-              <a
-                href="https://devburger-house.netlify.app/"
-                target="_blank"
-                class="project-btn"
-              >
-                Ver Projeto
-              </a>
-
-              <a
-                href="https://github.com/brotherson10/burger-house"
-                target="_blank"
-                class="project-btn outline"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-cards">
-          <div class="project-media">
-            <img
-              src="./assets/cafe-cafena.png"
-              alt="Site Café"
-              class="img-project"
-            />
-            <div class="project-overlay">
-              <span>HTML</span>
-              <span>CSS</span>
-            </div>
-          </div>
-          <div class="box-text-project">
-            <h3 class="info-project">Café Cafena</h3>
-            <p class="p-cards">
-              Landing page moderna para cafeteria com menu, localização e design
-              responsivo
-            </p>
-            <div class="project-links">
-              <a
-                href="https://cafe-cafena.netlify.app/"
-                target="_blank"
-                class="project-btn"
-              >
-                Ver Projeto
-              </a>
-
-              <a
-                href="https://github.com/brotherson10/Landing-page-Cafeteria"
-                target="_blank"
-                class="project-btn outline"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-cards">
-          <div class="project-media">
-            <img
-              src="./assets/devclub-store.png"
-              alt="Site DevStore"
-              class="img-project"
-            />
-            <div class="project-overlay">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-            </div>
-          </div>
-
-          <div class="box-text-project">
-            <h3 class="info-project">DevClub Store</h3>
-            <p class="p-cards">
-              Landing page com scroll moderno para apresentar produtos, design
-              responsivo
-            </p>
-            <div class="project-links">
-              <a
-                href="https://store-devclub.netlify.app/"
-                target="_blank"
-                class="project-btn"
-              >
-                Ver Projeto
-              </a>
-
-              <a
-                href="https://github.com/brotherson10/landing-page-devclubstore"
-                target="_blank"
-                class="project-btn outline"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contatos" class="contacts">
-      <h2 class="contacts-title">Vamos Conversar?</h2>
-
-      <p class="contacts-subtitle">
-        Se quiser saber mais sobre mim ou trabalhar junto, me chama em uma das
-        opções abaixo 👇
-      </p>
-
-      <div class="contacts-links">
-        <a
-          href="https://wa.me/351933368428?text=Olá%20Brotherson!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar."
-          target="_blank"
-          class="contact-item whatsapp"
-        >
-          💬 WhatsApp
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/brotherson/"
-          target="_blank"
-          class="contact-item"
-        >
-          🔗 LinkedIn
-        </a>
-
-        <a
-          href="https://github.com/brotherson10/"
-          target="_blank"
-          class="contact-item"
-        >
-          🐙 GitHub
-        </a>
-      </div>
-
-      <div class="contact-email">
-        <span class="email-text">brotherson100@gmail.com</span>
-        <button class="copy-btn" onclick="copyEmail()">📋</button>
-      </div>
-
-      <span class="contact-location">📍 Lisboa, Portugal</span>
-
-      <div id="toast" class="toast">Email copiado!</div>
-
-      <br />
-
-    </section>
+    <script src="./scripts.js"></script>
   </body>
-  <script src="./scripts.js"></script>
 </html>
