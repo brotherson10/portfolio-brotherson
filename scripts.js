@@ -28,20 +28,31 @@ navLinks.forEach((link) => {
 
 const reveals = document.querySelectorAll('.reveal');
 
-reveals.forEach((element, index) => {
-  element.style.setProperty('--delay', `${index * 0.07}s`);
+document.querySelectorAll('.stagger').forEach((group) => {
+  const items = group.querySelectorAll('.reveal');
+
+  items.forEach((item, index) => {
+    item.style.setProperty('--delay', `${index * 0.07}s`);
+  });
 });
 
 const revealObserver = new IntersectionObserver(
-  (entries) => {
+  (entries, observer) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target); // deixa de observar após revelar
     });
   },
-  { threshold: 0.10 }
+  {
+    threshold: 0.16
+  }
 );
 
-reveals.forEach((element) => revealObserver.observe(element));
+reveals.forEach((element) => {
+  revealObserver.observe(element);
+});
 
 const sections = document.querySelectorAll('section[id]');
 const activeObserver = new IntersectionObserver(

@@ -610,14 +610,16 @@ img {
 
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .55s ease, transform .55s ease;
+  transform: translateY(24px);
+  transition:
+    opacity .55s ease,
+    transform .55s ease;
   transition-delay: var(--delay, 0s);
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0)
+  transform: translateY(0);
 }
 
 @keyframes scan {
