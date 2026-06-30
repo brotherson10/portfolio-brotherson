@@ -43,9 +43,8 @@ Deploy (Netlify, Vercel)
 
 Se quiser saber mais sobre mim ou trabalhar junto, me chama em uma das opções abaixo:
 
-💬 WhatsApp
-🔗 LinkedIn
-🐙 GitHub
+🔗 LinkedIn: https://www.linkedin.com/in/brotherson/
+🔗 Portfolio: https://brotherson.dev
 📧 Email: brotherson100@gmail.com
 📍 Lisboa, Portugal
 
