@@ -5,7 +5,7 @@
 
 ✨ Sobre mim
 
-Olá! Meu nome é Brotherson Américo e sou Front-End Developer com foco em JavaScript e React. Tenho experiência prática no desenvolvimento de aplicações web, landing pages responsivas e projetos aplicando boas práticas de código e atenção à experiência do usuário.
+Olá! Meu nome é Brotherson Américo e sou Web Full Stack Developer com foco em JavaScript, React e Node.js. Tenho experiência prática no desenvolvimento de aplicações web, landing pages responsivas e projetos aplicando boas práticas de código e atenção à experiência do usuário.
 
 Especialidades: HTML, CSS, JavaScript moderno e React
 Conhecimento em Backend: Node.js, Express e MongoDB
@@ -46,7 +46,6 @@ Se quiser saber mais sobre mim ou trabalhar junto, me chama em uma das opções 
 🔗 LinkedIn: https://www.linkedin.com/in/brotherson/
 🔗 Portfolio: https://brotherson.dev
 📧 Email: brotherson100@gmail.com
-📍 Lisboa, Portugal
 
 📝 Observações
 Layout responsivo para desktop, tablet e mobile

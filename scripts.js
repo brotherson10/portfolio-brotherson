@@ -11,7 +11,7 @@ function copyEmail() {
 }
 
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+  nav.classList.toggle('scrolled', window.scrollY > 12);
 });
 
 menuToggle.addEventListener('click', () => {
@@ -25,8 +25,6 @@ navLinks.forEach((link) => {
     menuToggle.setAttribute('aria-expanded', 'false');
   });
 });
-
-const reveals = document.querySelectorAll('.reveal');
 
 document.querySelectorAll('.stagger').forEach((group) => {
   const items = group.querySelectorAll('.reveal');
@@ -50,7 +48,7 @@ const revealObserver = new IntersectionObserver(
   }
 );
 
-reveals.forEach((element) => {
+document.querySelectorAll('.reveal').forEach((element) => {
   revealObserver.observe(element);
 });
 
@@ -67,28 +65,3 @@ const activeObserver = new IntersectionObserver(
   { rootMargin: '-40% 0px -55% 0px' }
 );
 sections.forEach((section) => activeObserver.observe(section));
-
-const counters = document.querySelectorAll('[data-counter]');
-const counterObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const counter = entry.target;
-      const target = Number(counter.dataset.counter);
-      let current = 0;
-      const step = Math.max(1, Math.ceil(target / 42));
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-          counter.textContent = target === 100 ? '100%' : `+${target}`;
-          clearInterval(timer);
-          return;
-        }
-        counter.textContent = target === 100 ? `${current}%` : `+${current}`;
-      }, 24);
-      observer.unobserve(counter);
-    });
-  },
-  { threshold: 0.8 }
-);
-counters.forEach((counter) => counterObserver.observe(counter));
