@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portfólio de Brotherson Américo, desenvolvedor Web Full Stack. Projetos reais em HTML, CSS, JavaScript, React e integrações com back-end." />
+    <meta name="theme-color" content="#0a0e17" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="styles.css" />
     <title>Brotherson Américo | Web Full Stack Developer</title>
   </head>
@@ -31,8 +33,7 @@
     <main>
       <section id="inicio" class="hero section-shell">
         <div class="hero-content reveal">
-          <span class="availability"><span></span> Disponível para novas oportunidades</span>
-          <p class="eyebrow">Web Full Stack Developer</p>
+          <p class="eyebrow typed-wrap"><span class="typed-text" id="typedText"></span><span class="typed-cursor">|</span></p>
           <h1>Eu construo interfaces em que as pessoas <em>confiam.</em></h1>
           <p class="hero-text">
             Trabalho com HTML, CSS, JavaScript e React no dia a dia, e entendo o suficiente de back-end para conversar de igual para igual com quem constrói o resto do produto.
@@ -43,7 +44,16 @@
             <a href="#contatos" class="btn secondary">Falar comigo</a>
           </div>
 
-          <p class="stack-line">HTML &middot; CSS &middot; JavaScript &middot; React &middot; Node.js</p>
+          <div class="stack-icons">
+            <i class="devicon-html5-plain colored" title="HTML"></i>
+            <i class="devicon-css3-plain colored" title="CSS"></i>
+            <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+            <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+            <i class="devicon-react-original colored" title="React"></i>
+            <i class="devicon-nodejs-plain colored" title="Node.js"></i>
+            <i class="devicon-git-plain colored" title="Git"></i>
+            <i class="devicon-docker-plain colored" title="Docker"></i>
+          </div>
         </div>
 
         <div class="hero-visual reveal delay-1">
@@ -59,7 +69,7 @@
       <section id="sobre" class="about section-shell">
         <div class="section-heading reveal">
           <p class="eyebrow">Sobre mim</p>
-          <h2>Perfil técnico, cabeça de produto.</h2>
+          <h2>Perfil técnico, cabeça de <em>produto.</em></h2>
         </div>
 
         <div class="about-grid">
@@ -89,7 +99,7 @@
       <section id="projetos" class="projects section-shell">
         <div class="section-heading reveal">
           <p class="eyebrow">Projetos</p>
-          <h2>Trabalho recente que mostra como penso.</h2>
+          <h2>Trabalho recente que mostra como <em>penso.</em></h2>
           <a class="github-link" href="https://github.com/brotherson10" target="_blank" rel="noreferrer">Ver todos no GitHub →</a>
         </div>
 
@@ -140,21 +150,53 @@
       <section id="habilidades" class="skills section-shell">
         <div class="section-heading reveal">
           <p class="eyebrow">Stack</p>
-          <h2>Ferramentas que uso no dia a dia.</h2>
+          <h2>Ferramentas que uso no <em>dia a dia.</em></h2>
         </div>
 
         <div class="skills-grid reveal">
-          <article><h3>Frontend</h3><p>HTML, CSS, JavaScript, React</p></article>
-          <article><h3>Backend</h3><p>Node.js, Express, API REST, MongoDB, MySQL, PostgreSQL, Docker</p></article>
-          <article><h3>Automação</h3><p>n8n e fluxos com IA</p></article>
-          <article><h3>Versionamento</h3><p>Git, GitHub, deploy e Netlify</p></article>
+          <article>
+            <div class="skill-icons">
+              <i class="devicon-html5-plain colored"></i>
+              <i class="devicon-css3-plain colored"></i>
+              <i class="devicon-javascript-plain colored"></i>
+              <i class="devicon-react-original colored"></i>
+            </div>
+            <h3>Frontend</h3>
+            <p>HTML, CSS, JavaScript, React</p>
+          </article>
+          <article>
+            <div class="skill-icons">
+              <i class="devicon-nodejs-plain colored"></i>
+              <i class="devicon-mongodb-plain colored"></i>
+              <i class="devicon-mysql-plain colored"></i>
+              <i class="devicon-postgresql-plain colored"></i>
+              <i class="devicon-docker-plain colored"></i>
+            </div>
+            <h3>Backend</h3>
+            <p>Node.js, Express, API REST, MongoDB, MySQL, PostgreSQL, Docker</p>
+          </article>
+          <article>
+            <div class="skill-icons" aria-hidden="true">
+              <i class="gear-icon"></i>
+            </div>
+            <h3>Automação</h3>
+            <p>n8n e fluxos com IA</p>
+          </article>
+          <article>
+            <div class="skill-icons">
+              <i class="devicon-git-plain colored"></i>
+              <i class="devicon-github-original"></i>
+            </div>
+            <h3>Versionamento</h3>
+            <p>Git, GitHub, deploy e Netlify</p>
+          </article>
         </div>
       </section>
 
       <section id="contatos" class="contact section-shell reveal">
         <div class="contact-card">
           <p class="eyebrow">Contato</p>
-          <h2>Vamos conversar?</h2>
+          <h2>Vamos <em>conversar?</em></h2>
           <p>Se quiser saber mais sobre mim, avaliar meus projetos ou conversar sobre uma oportunidade, me chama por um dos canais abaixo.</p>
 
           <div class="contact-actions">

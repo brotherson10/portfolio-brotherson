@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 * {
   margin: 0;
@@ -7,16 +7,17 @@
 }
 
 :root {
-  --bg: #f6f1e7;
-  --surface: #fffdf8;
-  --surface-2: #efe6d4;
-  --ink: #241f19;
-  --muted: #6f6255;
-  --line: rgba(36, 30, 23, .14);
-  --terracotta: #b9502f;
-  --terracotta-deep: #8f3c22;
-  --olive: #59623f;
-  --shadow: 0 20px 44px rgba(36, 26, 15, .1);
+  --bg: #0a0e17;
+  --surface: #111826;
+  --surface-2: #182233;
+  --ink: #eef2f8;
+  --muted: #93a0b7;
+  --line: rgba(255, 255, 255, .09);
+  --accent: #00bfff;
+  --accent-deep: #0090c7;
+  --accent-soft: rgba(0, 191, 255, .14);
+  --glow: rgba(0, 191, 255, .38);
+  --shadow: 0 25px 60px rgba(0, 0, 0, .55);
   --radius: 20px;
 }
 
@@ -33,6 +34,11 @@ body {
   line-height: 1.65
 }
 
+::selection {
+  background: var(--accent);
+  color: #051019
+}
+
 a {
   text-decoration: none;
   color: inherit
@@ -44,7 +50,7 @@ img {
 }
 
 em {
-  font-style: italic
+  font-style: normal
 }
 
 .section-shell {
@@ -70,8 +76,8 @@ em {
 
 .nav.scrolled {
   border-bottom-color: var(--line);
-  background: rgba(246, 241, 231, .92);
-  backdrop-filter: saturate(1.1)
+  background: rgba(10, 14, 23, .86);
+  backdrop-filter: blur(10px) saturate(1.2)
 }
 
 .brand {
@@ -85,21 +91,24 @@ em {
   height: 38px;
   display: grid;
   place-items: center;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--accent);
   border-radius: 10px;
   transform: rotate(-4deg);
-  font-family: Fraunces, serif;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
-  font-size: .95rem
+  font-size: .95rem;
+  color: var(--accent);
+  box-shadow: 0 0 18px var(--accent-soft)
 }
 
 .brand-name {
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
   letter-spacing: -.01em
 }
 
 .brand-name em {
-  color: var(--terracotta)
+  color: var(--accent)
 }
 
 .nav-menu {
@@ -123,7 +132,8 @@ em {
   bottom: -3px;
   width: 100%;
   height: 1.5px;
-  background: var(--terracotta);
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--glow);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .25s ease
@@ -158,6 +168,7 @@ em {
 /* Hero */
 
 .hero {
+  position: relative;
   min-height: calc(100vh - 84px);
   display: grid;
   grid-template-columns: 1fr .85fr;
@@ -166,47 +177,94 @@ em {
   padding: 70px 0
 }
 
-.availability {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--olive);
-  font-size: .84rem;
-  font-weight: 500;
-  margin-bottom: 26px
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -120px -10% auto auto;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, var(--glow), transparent 70%);
+  filter: blur(10px);
+  opacity: .5;
+  pointer-events: none;
+  z-index: 0
 }
 
-.availability span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--olive)
+.hero>* {
+  position: relative;
+  z-index: 1
 }
 
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: .14em;
-  color: var(--terracotta);
+  color: var(--accent);
   font-weight: 600;
   font-size: .78rem;
   margin-bottom: 14px
 }
 
+.typed-wrap {
+  display: inline-flex;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace
+}
+
+.typed-text {
+  color: var(--accent)
+}
+
+.typed-cursor {
+  display: inline-block;
+  width: 1px;
+  margin-left: 2px;
+  color: var(--accent);
+  animation: blink 1s step-end infinite
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0
+  }
+}
+
 .hero h1,
 .section-heading h2,
 .contact-card h2 {
-  font-family: Fraunces, serif;
-  font-weight: 500;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
   font-size: clamp(2.3rem, 4.6vw, 4.4rem);
   line-height: 1.05;
   letter-spacing: -.015em
 }
 
-.hero h1 em {
-  color: var(--terracotta)
+.hero h1 em,
+.section-heading h2 em,
+.contact-card h2 em {
+  background: linear-gradient(90deg, var(--accent), #7fe3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px var(--glow));
+  animation: titleGlow 3.2s ease-in-out infinite
+}
+
+@keyframes titleGlow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px var(--glow))
+  }
+
+  50% {
+    filter: drop-shadow(0 0 22px var(--glow))
+  }
 }
 
 .hero-text {
@@ -225,7 +283,7 @@ em {
 
 .btn {
   display: inline-block;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--accent);
   border-radius: 12px;
   padding: 13px 24px;
   font-weight: 600;
@@ -234,25 +292,51 @@ em {
 }
 
 .btn.primary {
-  background: var(--terracotta);
-  border-color: var(--terracotta);
-  color: #fff8ef
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #04121b;
+  box-shadow: 0 0 24px var(--accent-soft)
 }
 
 .btn.primary:hover {
-  background: var(--terracotta-deep);
-  border-color: var(--terracotta-deep)
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  box-shadow: 0 0 30px var(--glow)
+}
+
+.btn.secondary {
+  color: var(--ink)
 }
 
 .btn.secondary:hover {
-  background: var(--ink);
-  color: var(--bg)
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #04121b
 }
 
-.stack-line {
-  color: var(--muted);
-  font-size: .88rem;
-  letter-spacing: .02em
+.stack-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px
+}
+
+.stack-icons i {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  transition: .25s
+}
+
+.stack-icons i:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 0 18px var(--accent-soft)
 }
 
 .hero-visual {
@@ -268,10 +352,10 @@ em {
 
 .photo-backdrop {
   position: absolute;
-  inset: 18px -18px -18px 18px;
-  background: var(--olive);
-  border-radius: 24px;
-  transform: rotate(-3deg)
+  inset: -30px;
+  background: radial-gradient(circle at 32% 30%, var(--accent), transparent 68%);
+  filter: blur(60px);
+  opacity: .5
 }
 
 .photo-frame {
@@ -295,12 +379,11 @@ em {
   left: -14px;
   bottom: 28px;
   padding: 9px 16px;
-  background: var(--terracotta);
-  color: #fff8ef;
+  background: var(--accent);
+  color: #04121b;
   border-radius: 8px;
   transform: rotate(-6deg);
-  font-family: Fraunces, serif;
-  font-style: italic;
+  font-family: "Space Grotesk", sans-serif;
   font-size: .9rem;
   box-shadow: var(--shadow)
 }
@@ -329,7 +412,8 @@ em {
 
 .github-link {
   align-self: center;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
   padding-bottom: 2px;
   font-weight: 500;
   font-size: .92rem
@@ -370,9 +454,9 @@ em {
 }
 
 .index {
-  font-family: Fraunces, serif;
-  font-style: italic;
-  color: var(--terracotta);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  color: var(--accent);
   font-size: 1.1rem
 }
 
@@ -409,7 +493,8 @@ em {
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow)
+  border-color: var(--accent);
+  box-shadow: var(--shadow), 0 0 24px var(--accent-soft)
 }
 
 .project-image {
@@ -440,7 +525,7 @@ em {
 .project-type {
   display: inline-block;
   margin-bottom: 10px;
-  color: var(--olive);
+  color: var(--accent);
   font-size: .76rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -448,8 +533,8 @@ em {
 }
 
 .project-content h3 {
-  font-family: Fraunces, serif;
-  font-weight: 500;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
   font-size: 1.3rem;
   margin-bottom: 8px
 }
@@ -484,7 +569,8 @@ em {
 .project-links a {
   font-size: .86rem;
   font-weight: 600;
-  border-bottom: 1px solid var(--ink)
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent)
 }
 
 /* Skills */
@@ -501,19 +587,59 @@ em {
 
 .skills-grid article {
   padding: 28px 24px;
-  background: var(--surface)
+  background: var(--surface);
+  transition: .25s
+}
+
+.skills-grid article:hover {
+  background: var(--surface-2)
 }
 
 .skills-grid h3 {
-  font-family: Fraunces, serif;
-  font-weight: 500;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
   font-size: 1.1rem;
-  margin-bottom: 8px
+  margin-bottom: 10px
 }
 
 .skills-grid p {
   color: var(--muted);
   font-size: .92rem
+}
+
+.skill-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px
+}
+
+.skill-icons i {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  font-size: 1.05rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px
+}
+
+.gear-icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--accent);
+  border-radius: 50%
+}
+
+.gear-icon::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border: 2px dashed var(--accent);
+  border-radius: 50%;
+  opacity: .6
 }
 
 /* Contact */
@@ -548,7 +674,7 @@ em {
 
 .contact-actions a,
 .contact-actions button {
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--accent);
   border-radius: 12px;
   padding: 13px 22px;
   font-weight: 600;
@@ -561,20 +687,22 @@ em {
 }
 
 .contact-actions a:first-child {
-  background: var(--terracotta);
-  border-color: var(--terracotta);
-  color: #fff8ef
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #04121b;
+  box-shadow: 0 0 24px var(--accent-soft)
 }
 
 .contact-actions a:first-child:hover {
-  background: var(--terracotta-deep);
-  border-color: var(--terracotta-deep)
+  background: var(--accent-deep);
+  border-color: var(--accent-deep)
 }
 
 .contact-actions a:not(:first-child):hover,
 .contact-actions button:hover {
-  background: var(--ink);
-  color: var(--bg)
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #04121b
 }
 
 .contact-meta {
@@ -601,8 +729,8 @@ em {
   transform: translate(-50%, 18px);
   padding: 12px 20px;
   border-radius: 12px;
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--accent);
+  color: #04121b;
   font-weight: 600;
   font-size: .92rem;
   opacity: 0;
@@ -643,7 +771,7 @@ em {
   }
 
   .hero-actions,
-  .availability {
+  .stack-icons {
     justify-content: center
   }
 

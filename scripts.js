@@ -52,6 +52,36 @@ document.querySelectorAll('.reveal').forEach((element) => {
   revealObserver.observe(element);
 });
 
+const typedText = document.getElementById('typedText');
+
+if (typedText) {
+  const roles = ['FULL STACK DEVELOPER'];
+  let roleIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function typeLoop() {
+    const current = roles[roleIndex];
+    let delay = deleting ? 45 : 90;
+
+    if (!deleting && charIndex === current.length) {
+      delay = 1800;
+      deleting = true;
+    } else if (deleting && charIndex === 0) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      delay = 400;
+    } else {
+      charIndex += deleting ? -1 : 1;
+    }
+
+    typedText.textContent = current.slice(0, charIndex);
+    setTimeout(typeLoop, delay);
+  }
+
+  typeLoop();
+}
+
 const sections = document.querySelectorAll('section[id]');
 const activeObserver = new IntersectionObserver(
   (entries) => {
