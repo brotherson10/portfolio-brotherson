@@ -8,7 +8,7 @@
 Olá! Meu nome é Brotherson Américo e sou Full Stack Developer com foco em desenvolvimento Web, criando aplicações modernas do frontend ao backend. Tenho experiência prática no desenvolvimento de aplicações web, landing pages responsivas e projetos aplicando boas práticas de código e atenção à experiência do usuário.
 
 Especialidades: HTML, CSS, JavaScript moderno, React, Next.js e TypeScript
-Conhecimento em Backend: Node.js, Express, MongoDB, MySQL, PostgreSQL, Docker e Supabase
+Conhecimento em Backend: Node.js, Express, MongoDB, MySQL, PostgreSQL e Docker
 Automação: n8n e fluxos com IA
 Controle de versão: Git e GitHub
 Deploy: Netlify e outros serviços de hospedagem
@@ -34,7 +34,6 @@ MongoDB
 MySQL
 PostgreSQL
 Docker
-Supabase
 
 Automação
 n8n

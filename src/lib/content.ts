@@ -120,7 +120,7 @@ export const content: Record<Lang, Content> = {
         { name: "Frontend", items: ["HTML", "CSS", "JavaScript", "React", "Next.js", "TypeScript"] },
         {
           name: "Backend",
-          items: ["Node.js", "Express", "API REST", "MongoDB", "MySQL", "PostgreSQL", "Docker", "Supabase"],
+          items: ["Node.js", "Express", "API REST", "MongoDB", "MySQL", "PostgreSQL", "Docker"],
         },
         { name: "Automação", items: ["n8n", "Fluxos com IA"] },
         { name: "Versionamento", items: ["Git", "GitHub", "Netlify"] },
@@ -213,7 +213,7 @@ export const content: Record<Lang, Content> = {
         { name: "Frontend", items: ["HTML", "CSS", "JavaScript", "React", "Next.js", "TypeScript"] },
         {
           name: "Backend",
-          items: ["Node.js", "Express", "REST API", "MongoDB", "MySQL", "PostgreSQL", "Docker", "Supabase"],
+          items: ["Node.js", "Express", "REST API", "MongoDB", "MySQL", "PostgreSQL", "Docker"],
         },
         { name: "Automation", items: ["n8n", "AI-assisted flows"] },
         { name: "Version control", items: ["Git", "GitHub", "Netlify"] },
