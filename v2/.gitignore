@@ -1,0 +1,12 @@
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+
+# Local design records: prototype captures and conceptual references (the Tralyn concept uses
+# AI-generated dashboards and must never be published as the real product).
+docs/prototype/
+docs/reference/
+
+# Unused raw capture (it shows a client-site defect); kept on disk only.
+assets-src/projects/gsa-mobile.png
