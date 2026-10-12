@@ -1,0 +1,473 @@
+@import "tailwindcss";
+
+/* ───────────────────────── Design tokens ─────────────────────────
+   Dark Editorial (base, type, photography) + Technical Blueprint (rules, marks, annotations).
+   Full rationale and contrast table: DESIGN-SYSTEM.md */
+
+@theme {
+  /* Colour */
+  --color-ink: #0b0c0f;          /* page */
+  --color-ink-raised: #121419;   /* raised surfaces, figure frames */
+  --color-rule: #23262e;         /* hairlines */
+  --color-rule-strong: #3a3f4b;  /* construction lines, outlines */
+  --color-paper: #ece8e1;        /* primary text */
+  --color-paper-muted: #a6a29a;  /* secondary text */
+  --color-paper-subtle: #85827b; /* labels, captions */
+  --color-blue: #8fb3ff;         /* the only accent: links, marks, focus, primary action */
+  --color-blue-soft: #b9cfff;    /* hover of the accent */
+
+  /* Type families (CSS variables provided by next/font in the layout) */
+  --font-display: var(--font-instrument-serif), "Times New Roman", serif;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* Responsive type scale */
+  --text-display-max: 9rem; /* cap for the fitted display size, see .display-fit */
+  --text-headline: clamp(2.25rem, 1rem + 4.5vw, 4.5rem);
+  --text-headline--line-height: 1;
+  --text-title: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+  --text-title--line-height: 1.15;
+  --text-lead: clamp(1.0625rem, 0.95rem + 0.45vw, 1.25rem);
+  --text-lead--line-height: 1.55;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.12em;
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+/* ───────────────────────── Base ───────────────────────── */
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    min-height: 100svh;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-blue);
+    color: var(--color-ink);
+  }
+
+  /* One focus style for every interactive element: visible, 3:1+ against the page. */
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* ───────────────────────── Components ───────────────────────── */
+
+@layer components {
+  /* Project stack: mono, one step above .label, in muted paper for contrast (7.7:1). */
+  .stack-line {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--color-paper-muted);
+  }
+
+  /* Project links: a 44px touch target on phones without changing the inline look. */
+  .link-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em; /* flex drops the leading space before the ↗ */
+    min-height: 2.75rem;
+  }
+  @media (min-width: 768px) {
+    .link-target {
+      min-height: 0;
+    }
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+  }
+
+  /* Editorial text link: hairline underline that thickens and turns blue. */
+  .link {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    text-decoration-color: var(--color-rule-strong);
+    transition:
+      color 160ms ease,
+      text-decoration-color 160ms ease;
+  }
+  .link:hover {
+    color: var(--color-blue-soft);
+    text-decoration-color: currentColor;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding: 0 1.375rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+  .btn-arrow {
+    display: inline-block;
+    transition: transform 220ms var(--ease-editorial);
+  }
+  .btn:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+  .btn-primary {
+    background: var(--color-blue);
+    color: var(--color-ink);
+  }
+  .btn-primary:hover {
+    background: var(--color-blue-soft);
+  }
+  .btn-secondary {
+    border-color: var(--color-rule-strong);
+    color: var(--color-paper);
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-paper);
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  /* Portrait grade: non destructive, CSS only. Keeps the shirt green, lowers saturation and
+     lifts contrast slightly so the photo sits in the dark page without a glow. */
+  .portrait-grade {
+    filter: saturate(0.74) contrast(1.06) brightness(0.8);
+  }
+  /* Darkens the light studio backdrop around the subject, most of all above the head;
+     the face (upper centre) is untouched. */
+  .portrait-vignette {
+    background:
+      linear-gradient(to bottom, rgb(11 12 15 / 0.45), transparent 22%),
+      radial-gradient(ellipse 56% 50% at 50% 34%, transparent 42%, rgb(11 12 15 / 0.66) 100%),
+      linear-gradient(rgb(143 179 255 / 0.05), rgb(143 179 255 / 0.05));
+  }
+  /* Edge mask that dissolves the photograph into the page instead of framing it.
+     Phones: soft top edge and a long fade at the base, under the headline. Tablet and desktop:
+     top, base, a long fade on the left (towards the text) and a short one on the right. */
+  .portrait-blend {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 52%, transparent 97%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 52%, transparent 97%);
+  }
+  @media (min-width: 768px) {
+    .portrait-blend {
+      -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 9%, #000 56%, transparent 86%),
+        linear-gradient(to right, transparent 0%, #000 36%, #000 88%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 9%, #000 56%, transparent 86%),
+        linear-gradient(to right, transparent 0%, #000 36%, #000 88%, transparent 100%);
+      mask-composite: intersect;
+    }
+  }
+
+  /* Display headline sized to fit: the largest size at which the longest line (--measure, in em)
+     fits the available width, capped by --text-display-max. Avoids both overflow on small phones
+     and a uniformly shrunk headline on large ones. */
+  .display-fit {
+    --avail: calc(100vw - 2rem);
+    --cap: var(--text-display-max);
+    font-size: min(var(--cap), calc(var(--avail) / var(--measure, 6)));
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 768px) {
+    .display-fit {
+      /* five of eight columns: the portrait sits beside the headline from tablet up */
+      --avail: calc((100vw - 4rem) * 5 / 8);
+      --cap: 7.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .display-fit {
+      /* eight of twelve columns */
+      --avail: calc((min(100vw, 1440px) - 6rem) * 8 / 12);
+      --cap: var(--text-display-max);
+    }
+  }
+
+  /* ── Tralyn showcase ──────────────────────────────────────────────
+     The one cinematic moment: near-black stage, faint blue light, real captures in devices
+     built with CSS (no device images, so the product is never hidden by a mockup). */
+  .tralyn-stage {
+    background: #07080b;
+  }
+  .tralyn-light {
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 38%, rgb(91 132 245 / 0.13), transparent 70%),
+      linear-gradient(to bottom, transparent 75%, rgb(0 0 0 / 0.35));
+  }
+  @media (min-width: 1024px) {
+    .tralyn-light {
+      background:
+        radial-gradient(ellipse 48% 52% at 72% 36%, rgb(91 132 245 / 0.15), transparent 70%),
+        radial-gradient(ellipse 30% 22% at 72% 4%, rgb(143 179 255 / 0.06), transparent 70%),
+        linear-gradient(to bottom, transparent 75%, rgb(0 0 0 / 0.35));
+    }
+  }
+
+  /* Devices. Flat on phones; a slight three-quarter view from tablet up. */
+  .device-stage {
+    position: relative;
+    perspective: 2200px;
+    --device-tilt: rotateY(0deg);
+    --device-tilt-from: rotateY(0deg);
+  }
+  @media (min-width: 768px) {
+    .device-stage {
+      padding-bottom: 6%;
+      --device-tilt: rotateY(-8deg) rotateX(3deg);
+      --device-tilt-from: rotateY(-16deg) rotateX(8deg);
+    }
+  }
+  @media (min-width: 1024px) {
+    .device-stage {
+      --device-tilt: rotateY(-11deg) rotateX(4deg);
+      --device-tilt-from: rotateY(-20deg) rotateX(9deg);
+    }
+  }
+  .device-rise {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: var(--device-tilt);
+  }
+  .laptop {
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .laptop {
+      width: 86%;
+    }
+  }
+  .laptop-screen {
+    padding: 1.6%;
+    border: 1px solid rgb(255 255 255 / 0.09);
+    border-radius: 12px 12px 4px 4px;
+    background: #0c0e13;
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 0.6),
+      0 40px 80px -30px rgb(0 0 0 / 0.9),
+      0 0 90px -24px rgb(91 132 245 / 0.35);
+  }
+  .laptop-base {
+    position: relative;
+    height: clamp(8px, 1.3vw, 16px);
+    margin: 0 -6%;
+    border-radius: 0 0 14px 14px / 0 0 10px 10px;
+    background: linear-gradient(#2b2f3a, #15171d 60%, #0d0f13);
+    box-shadow: 0 18px 30px -12px rgb(0 0 0 / 0.8);
+  }
+  .laptop-base::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 42%;
+    width: 16%;
+    height: 38%;
+    border-radius: 0 0 8px 8px;
+    background: #0d0f13;
+  }
+  /* A faint diagonal sheen: reads as glass without hiding the interface. */
+  .screen-glass {
+    pointer-events: none;
+    background: linear-gradient(115deg, rgb(255 255 255 / 0.07) 0%, transparent 30%);
+  }
+  .phone {
+    position: relative;
+    width: 36%;
+    margin: -6% 0 0 auto;
+  }
+  @media (min-width: 768px) {
+    .phone {
+      position: absolute;
+      right: 0;
+      bottom: -2%;
+      width: 23%;
+      margin: 0;
+      transform: translateZ(70px);
+    }
+  }
+  .phone-body {
+    padding: 5%;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: 1.75rem;
+    background: #0c0e13;
+    box-shadow:
+      0 30px 60px -20px rgb(0 0 0 / 0.9),
+      0 0 60px -24px rgb(91 132 245 / 0.3);
+  }
+  .device-floor {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .device-floor {
+      display: block;
+      position: absolute;
+      inset: auto 10% 0 4%;
+      height: 48px;
+      background: radial-gradient(ellipse at center, rgb(0 0 0 / 0.75), transparent 70%);
+      filter: blur(6px);
+      z-index: -1;
+    }
+  }
+}
+
+/* ───────────────────────── Entrance motion ─────────────────────────
+   Runs only when JS has flagged the document (`.js`, set before paint) and the visitor has
+   not asked for reduced motion. Without either, everything is simply visible. */
+
+@keyframes line-up {
+  from {
+    transform: translateY(104%);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes photo-in {
+  from {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+}
+@keyframes device-in {
+  from {
+    transform: translateY(48px) var(--device-tilt-from);
+    opacity: 0.35;
+  }
+  to {
+    transform: var(--device-tilt);
+    opacity: 1;
+  }
+}
+@keyframes phone-in {
+  from {
+    translate: 0 64px;
+  }
+}
+@keyframes media-in {
+  from {
+    opacity: 0.2;
+    transform: translateY(32px);
+  }
+}
+@keyframes draw-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@layer utilities {
+  /* A masked line of display type. Padding keeps italic overhangs and descenders unclipped. */
+  .mask-line {
+    display: block;
+    overflow: clip;
+    padding: 0 0.12em 0.1em 0;
+    margin: 0 -0.12em -0.1em 0;
+  }
+  .mask-line > span {
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .js .mask-line > span {
+      animation: line-up 1000ms var(--ease-editorial) both;
+      animation-delay: calc(150ms + var(--i, 0) * 110ms);
+    }
+    .js .enter {
+      animation: fade-up 800ms var(--ease-editorial) both;
+      animation-delay: var(--d, 0ms);
+    }
+    .js .enter-photo {
+      animation: photo-in 1600ms var(--ease-editorial) both;
+      animation-delay: var(--d, 200ms);
+    }
+    .js .enter-draw-x {
+      transform-origin: left;
+      animation: draw-x 1200ms var(--ease-editorial) both;
+      animation-delay: var(--d, 300ms);
+    }
+  }
+
+  /* Rules that draw as they scroll into view. Progressive enhancement: browsers without
+     scroll-driven animations (or with reduced motion) just show the finished line. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .draw-on-view {
+        transform-origin: left;
+        animation: draw-x linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 35%;
+      }
+
+      /* Sections below the hero: text rises into place as it enters the viewport and media
+         settles from a slight offset. Tied to the native scroll position (no JS, no pinning,
+         nothing intercepted); unsupported browsers simply show the content. */
+      .reveal {
+        animation: fade-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+      .reveal-media {
+        animation: media-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 28%;
+      }
+
+      /* Tralyn devices settle from a steeper angle as the stage scrolls in; the phone rises a
+         little faster than the laptop, which gives the pair its depth. */
+      .device-rise {
+        animation: device-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 42%;
+      }
+      .phone {
+        animation: phone-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 50%;
+      }
+    }
+  }
+}

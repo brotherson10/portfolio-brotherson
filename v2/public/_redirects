@@ -1,0 +1,5 @@
+# "/" goes to the visitor's language edition. Netlify matches only the first language in the
+# browser's Accept-Language header, and "en" covers every en-* variant. Everyone else gets
+# Portuguese. "!" forces the rule over the exported out/index.html (a meta-refresh fallback).
+/  /en/  302!  Language=en
+/  /pt/  302!

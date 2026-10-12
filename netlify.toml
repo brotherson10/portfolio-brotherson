@@ -1,8 +1,35 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
+# Portfolio V2: a Next.js static export that lives in v2/. The V1 (Vite) source stays at the
+# repository root and in git history (tag v1-final) but is no longer built.
+#
+# Netlify resolves every path below relative to `base`, so `publish = "out"` is v2/out.
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[build]
+  base = "v2"
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  # Next.js 16 needs Node 20.9 or newer.
+  NODE_VERSION = "22"
+  # Plain static files: keep Netlify's Next.js adapter out of a static export.
+  # Documented by the Next.js runtime; confirm in the first build log that it is honoured.
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+# Routing lives in v2/public/_redirects ("/" by language) and the export's own 404.html.
+# The V1 single-page fallback (/* -> /index.html 200) is intentionally gone: it turned every
+# missing URL into a 200 page.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+
+# Only Next's content-hashed build files are immutable. Images in /images and /og keep their
+# names when replaced, so they stay on Netlify's default revalidation.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
